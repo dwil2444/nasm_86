@@ -5,6 +5,8 @@ section .data
 section .text
     global _start
 
+; section .bss
+
 _start:
 
     # send hello world to sys_write
@@ -23,7 +25,7 @@ _start:
     syscall
 
 
-    # Exit the program
+    # Exit the program - sys_exit(0)
     mov rax, 60
     mov rdi, 0
     syscall
