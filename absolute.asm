@@ -1,15 +1,29 @@
-segment .text ;code segment
-    global main ;must be declared for linker
+section .data
+    text db "Hello, World!", 10
+    prompt db "Enter a Number", 10
 
-main: ;tell linker entry point
-    mov edx,len ;message length
-    mov ecx, msg ;message to write
-    mov ebx, 1 ;file descriptor (stdout)
-    mov eax, 4 ;system call number (sys_write)
-    int 0x80 ;call kernel
-    mov eax, 1 ;system call number (sys_exit)
-    int 0x80 ;call kernel
+section .text
+    global _start
 
-segment .data ;data segment
-msg     db "Hello, world!",0xa ;our dear string
-len     equ $ - msg ;length of our dear string
+_start:
+
+    # send hello world to sys_write
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, text
+    mov rdx, 14
+    syscall
+
+    
+
+    mov rax, 1
+    mov rdi, 1 
+    mov rsi, prompt
+    mov rdx, 15
+    syscall
+
+
+    # Exit the program
+    mov rax, 60
+    mov rdi, 0
+    syscall

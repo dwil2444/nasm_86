@@ -1,2 +1,8 @@
 #!/bin/sh
-nasm -f macho64 absolute.asm && ld -macosx_version_min 10.7.0 -lSystem -o 64 absolute.o && ./64
+nasm -f elf64 -o absolute.o absolute.asm
+# ld -s -o absolute absolute.o
+ld absolute.o -o absolute
+./absolute
+
+#clean up
+# rm -rf ./absolute absolute.o
