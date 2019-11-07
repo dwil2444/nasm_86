@@ -5,4 +5,4 @@ ld absolute.o -o absolute
 ./absolute
 
 #clean up
-# rm -rf ./absolute absolute.o
+rm -rf ./absolute absolute.o
