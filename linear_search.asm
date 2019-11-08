@@ -1,27 +1,32 @@
-section .data
- 
-numbers_list:
-    long 3,76,34,23,68,35,57,89,12,4,99,86,33,144,0
- 
 section .text
+    global main ;must be declared for linker (ld)
+main:
+    mov eax,3 ;number bytes to be summed
+    mov ebx,0 ;EBX will store the sum
+    mov ecx, x ;ECX will point to the current element to be summed
+    
+top: add ebx, [ecx]
+    add ecx,1 ;move pointer to next element
+    dec eax ;decrement counter
+    jnz top ;if counter not 0, then loop again
  
-global _start
- 
-_start:
-    movl 0, edi
-loop:
-    movl numbers_list(edi,4), eax
-    cmpl 35, eax
-    je finish
-    cmpl 0, eax
-    je not_found
-    incl edi
-    jmp loop
- 
-not_found:
-    movl 255, ebx
- 
-finish:
-    movl 1, eax
-    movl edi, ebx
-    int 0x80
+done:
+    add ebx, '0'
+    mov [sum],byte ebx ;done, store result in "sum"
+display:
+    mov edx,1 ;message length
+    mov ecx, sum ;message to write
+    mov ebx, 1 ;file descriptor (stdout)
+    mov eax, 4 ;system call number (sys_write)
+    int 0x80 ;call kernel
+    mov eax, 1 ;system call number (sys_exit)
+    int 0x80 ;call kernel
+section .data
+
+global x
+x:
+    db 2
+    db 4
+    db 3
+sum:
+    db 0
