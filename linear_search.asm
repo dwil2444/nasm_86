@@ -7,11 +7,10 @@ _start:
    mov  ebx,0      ;EBX will store the sum
    mov  ecx, x     ;ECX will point to the current element to be summed
 
-top:  add  ebx, [ecx]
-   cmp qword[ecx], 7 ; compare the next element with the key
+top: mov  ebx, [ecx]
+   cmp ebx, 2
    je found
    add  ecx, 1      ;move pointer to next element
-   cld
    dec  eax        ;decrement counter
    jnz  top        ;if counter not 0, then loop again
 
@@ -47,13 +46,10 @@ failmsg db 'Not Found'
 len2  equ  $ - failmsg
 global x
 x:    
-   db  2
-   db  3
-   db  4
-   db  1
-   db  7
-   db  0
+   dd  2
+   dd  3
+   dd  4
+   dd  1
+   dd  7
+   dd  0
 len:    equ $-x
-
-sum: 
-   db  0
