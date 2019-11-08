@@ -1,8 +1,8 @@
 #!/bin/sh
-nasm -f elf64 -o swap.o swap.asm
+nasm -f elf64 -o linear_search.o linear_search.asm
 # ld -s -o absolute absolute.o
-ld swap.o -o swap
-./swap
+ld linear_search.o -o linear_search
+./linear_search
 
 #clean up
-rm -rf ./swap swap.o
+rm -rf ./linear_search linear_search.o
