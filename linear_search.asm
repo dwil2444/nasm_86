@@ -1,14 +1,19 @@
+; CSCI 48 - 01
+; Dane A Williamson
+; 11/7/19
+
+;  Perform Linear Search on array of integers
 section	.text
    global _start  
 	
 _start:	
  		
    mov  eax, len     ;number bytes to be summed 
-   mov  ebx,0      ;EBX will store the sum
-   mov  ecx, x     ;ECX will point to the current element to be summed
+   mov  ebx,0      ;EBX will store the value of the current index of the array
+   mov  ecx, x     ;ECX will point to the current index element
 
 top: mov  ebx, [ecx]
-   cmp ebx, 2
+   cmp ebx, 2 ; check if current value is key being searched for
    je found
    add  ecx, 1      ;move pointer to next element
    dec  eax        ;decrement counter

@@ -1,6 +1,7 @@
-# 64
-64
-
 # output files
 *.o
 
+# Ignore files that have no extension
+*
+!/**/
+!*.*

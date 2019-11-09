@@ -1,8 +1,8 @@
 #!/bin/sh
-nasm -f elf64 -o linear_search.o linear_search.asm
+nasm -f elf64 -o minimax.o minimax.asm
 # ld -s -o absolute absolute.o
-ld linear_search.o -o linear_search
-./linear_search
+ld minimax.o -o minimax
+./minimax
 
 #clean up
-rm -rf ./linear_search linear_search.o
+rm -rf ./minimax minimax.o

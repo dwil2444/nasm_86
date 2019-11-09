@@ -2,10 +2,11 @@
 ; Dane A Williamson
 ; 11/7/19
 
+; Swap two strings given both memory addresses
 section	.text
-    global_start     ;must be declared for linker (ld)
+    global_start     
 
-_start:             ;tell linker entry point
+_start:            
    ; display both strings
    mov	edx,len1       ;message length
    mov	ecx, name   ;message to write
@@ -28,7 +29,7 @@ _start:             ;tell linker entry point
    int	0x80 
 	
 
-   ; display both stringss again 
+   ; display both strings again 
    mov	edx,len2      ;message length
    mov	ecx,name    ;message to write
    mov	ebx,1       ;file descriptor (stdout)
